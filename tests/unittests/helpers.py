@@ -1,6 +1,5 @@
 # This file is part of curtin. See LICENSE file for copyright and license info.
 
-import imp
 import importlib
 import logging
 from unittest import mock
@@ -21,7 +20,7 @@ def builtin_module_name():
     options = ('builtins', '__builtin__')
     for name in options:
         try:
-            imp.find_module(name)
+            importlib.util.find_spec(name)
         except ImportError:
             continue
         else:
